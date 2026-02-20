@@ -1,10 +1,7 @@
 package org.skypro.skyshop.model.search;
 
-import org.springframework.stereotype.Service;
-
 import java.util.UUID;
 
-@Service
 public final class SearchResult {
     private final UUID id;
     private final String name;
@@ -14,6 +11,14 @@ public final class SearchResult {
         this.id = id;
         this.name = name;
         this.contentType = contentType;
+    }
+
+    public static SearchResult fromSearchable(Searchable searchable) {
+        return new SearchResult(
+                searchable.getId(),
+                searchable.getName(),
+                searchable.getContentType()
+        );
     }
 
     public UUID getId() {
@@ -26,13 +31,5 @@ public final class SearchResult {
 
     public String getContentType() {
         return contentType;
-    }
-
-    public static SearchResult fromSearchable(Searchable searchable) {
-        return new SearchResult(
-                searchable.getId(),
-                searchable.getName(),
-                searchable.getContentType()
-        );
     }
 }
