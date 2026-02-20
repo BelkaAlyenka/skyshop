@@ -17,7 +17,7 @@ public class StorageService {
     private final Map<UUID, Product> products;
     private final Map<UUID, Article> articles;
 
-    public StorageService(Map<UUID, Article> mergedMap) {
+    public StorageService() {
         this.products = new HashMap<>();
         this.articles = new HashMap<>();
 
