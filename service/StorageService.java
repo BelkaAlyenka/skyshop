@@ -41,6 +41,10 @@ public class StorageService {
                 .collect(Collectors.toList());
     }
 
+    public Optional<Product> getProductById(UUID id) {
+        return Optional.ofNullable(products.get(id));
+    }
+
     private void testProducts() {
         UUID firstProductId = UUID.randomUUID();
         Product firstProduct = new SimpleProduct(firstProductId, "смартфон", 13500);
