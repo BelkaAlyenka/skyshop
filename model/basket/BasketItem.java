@@ -25,4 +25,8 @@ public final class BasketItem {
     public int getQuantity() {
         return quantity;
     }
+
+    public int getTotalPrice() {
+        return product.getProductPrice() * quantity;
+    }
 }
