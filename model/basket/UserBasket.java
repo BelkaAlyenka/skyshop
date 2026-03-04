@@ -5,11 +5,10 @@ import java.util.List;
 public final class UserBasket {
     private final List<BasketItem> items;
     private final int total;
+
     public UserBasket(List<BasketItem> items) {
         this.items = items;
-        this.total = items.stream()
-                .mapToInt(BasketItem::getTotalPrice)
-                .sum();
+        this.total = calculateSum(items);
     }
 
     public List<BasketItem> getItems() {
@@ -18,5 +17,11 @@ public final class UserBasket {
 
     public int getTotal() {
         return total;
+    }
+
+    private int calculateSum(List<BasketItem> basketItems) {
+        return basketItems.stream()
+                .mapToInt(item -> item.getProduct().getProductPrice() * item.getQuantity())
+                .sum();
     }
 }

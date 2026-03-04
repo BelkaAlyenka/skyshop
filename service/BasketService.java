@@ -22,7 +22,7 @@ public class BasketService {
     }
 
     public UserBasket getUserBasket() {
-        Map<UUID, Integer> mapProducts = productBasket.getProducts();
+        Map<UUID, Integer> mapProducts = productBasket.getAllProducts();
 
         List<BasketItem> basketItems = mapProducts.entrySet().stream()
                 .map(entry -> {
@@ -36,9 +36,9 @@ public class BasketService {
     }
 
     public void addProductToBasket(UUID id) {
-        Product product = storageService.getProductById(id)
+        storageService.getProductById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Продукт не найден"));
 
-        productBasket.addProduct(product, id);
+        productBasket.addProduct(id);
     }
 }
