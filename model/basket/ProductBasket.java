@@ -15,7 +15,7 @@ public class ProductBasket {
             return;
         }
 
-        mapProducts.computeIfAbsent(id, k -> 1);
+        mapProducts.computeIfAbsent(id, k -> 0);
         mapProducts.put(id, mapProducts.get(id) + 1);
     }
 
